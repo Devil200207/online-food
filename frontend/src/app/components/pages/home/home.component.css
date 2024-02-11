@@ -51,12 +51,14 @@ li a img{
   margin-bottom: 0.2rem;
 }
 
-.checked {
-  color: grey;
+.red-star {
+  color: red; /* Set the color for filled stars */
 }
-.unchecked{
-  color: grey;
+
+.grey-star {
+  color: grey; /* Set the color for unfilled stars */
 }
+
 .product-item-footer{
   display: flex;
   justify-content: space-between;

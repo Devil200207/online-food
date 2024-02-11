@@ -1,5 +1,6 @@
 import { FoodService } from './../../../services/food.service';
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Food } from 'src/app/shared/models/food';
 
 @Component({
@@ -10,15 +11,16 @@ import { Food } from 'src/app/shared/models/food';
 export class HomeComponent {
 
   foods:Food[] = [];
-  constructor(private foodservice: FoodService) {
-    this.foods = this.foodservice.getAll();
-  }
-
-  getStarClass(starIndex: number, rating: number): string {
-    if (starIndex < rating) {
-      return 'checked';
-    } else {
-      return 'unchecked';
-    }
+  constructor(private foodservice: FoodService,activateRoute:ActivatedRoute) {
+    activateRoute.params.subscribe(params => {
+      if(params['searchterm'])
+      {
+        this.foods = this.foodservice.getAllFoodBySearchTerm(params['searchterm']);
+      }
+      else
+      {
+        this.foods = this.foodservice.getAll();
+      }
+    });
   }
 }
