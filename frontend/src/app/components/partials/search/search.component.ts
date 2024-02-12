@@ -11,7 +11,9 @@ export class SearchComponent {
 
   constructor(activatedRoute:ActivatedRoute,private router:Router)
   {
+    console.log(this.searchTerm)
     activatedRoute.params.subscribe(params => {
+      if(params['searchTerm'] != undefined)
       this.searchTerm = params['searchTerm'];
     });
   }
