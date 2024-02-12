@@ -17,6 +17,10 @@ export class HomeComponent {
       {
         this.foods = this.foodservice.getAllFoodBySearchTerm(params['searchterm']);
       }
+      else if(params['tag'])
+      {
+        this.foods = this.foodservice.getAllFoodByTag(params['tag']);
+      }
       else
       {
         this.foods = this.foodservice.getAll();
