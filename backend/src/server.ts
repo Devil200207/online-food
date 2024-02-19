@@ -23,8 +23,7 @@ app.get("/api/foods/tags", (req, res) => {
 })
 
 app.get("/api/foods/tags/:tagName", (req, res) => {
-    const tagName = req.params.tagName.charAt(0).toUpperCase() + req.params.tagName.slice(1).toLowerCase();
-    console.log(tagName)
+    const tagName = req.params.tagName;
     const foods = tagName === "All" ? sample_food : sample_food.filter(food => food.tags?.includes(tagName));
     res.send(foods);
 })
