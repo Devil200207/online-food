@@ -79,3 +79,21 @@ export const sample_tags: any[] = [
   { name: 'Fry', count: 1 },
   { name: 'Soup', count: 1 },
 ]
+
+export const sample_users: any[] = [
+  { 
+    name: 'abc',
+    email:"c@gmail.com",
+    password: "123",
+    address: "abc street, xyz city",
+    isAdmin: true,
+  },
+  { 
+    name: 'xyz',
+    email:"x@gmail.com",
+    password: "123",
+    address: "xyz street, xyz city",
+    isAdmin: false,
+  },
+  
+]
