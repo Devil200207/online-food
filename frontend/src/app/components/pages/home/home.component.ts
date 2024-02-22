@@ -2,7 +2,9 @@ import { FoodService } from './../../../services/food.service';
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
+import { UserService } from 'src/app/services/user.service';
 import { Food } from 'src/app/shared/models/food';
+import { Message } from 'primeng/api';
 
 @Component({
   selector: 'app-home',
@@ -12,7 +14,9 @@ import { Food } from 'src/app/shared/models/food';
 export class HomeComponent {
 
   foods:Food[] = [];
-  constructor(private foodservice: FoodService,activateRoute:ActivatedRoute) {
+  messages: Message[] = [];
+
+  constructor(private foodservice: FoodService,activateRoute:ActivatedRoute,public userService:UserService) {
     let foodObserable:Observable<Food[]>;
     activateRoute.params.subscribe(params => {
       if(params['searchterm'])
@@ -32,5 +36,12 @@ export class HomeComponent {
         this.foods = foods;
       });
     });
+
+    if (this.userService.messages) {
+      this.messages = this.userService.messages;
+    }
+    setTimeout(() => {
+      this.messages = [];
+    }, 3000);
   }
 }

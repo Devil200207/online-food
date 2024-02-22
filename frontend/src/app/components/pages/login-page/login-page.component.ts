@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup,FormBuilder, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-login-page',
@@ -11,9 +13,11 @@ export class LoginPageComponent implements OnInit
 
   loginForm!:FormGroup;
   isSubmitted:boolean = false;
+  returnUrl = '';
 
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder,private userService:UserService,private activateRoute:ActivatedRoute
+    , private router:Router) { }
 
   ngOnInit()
   {
@@ -21,6 +25,8 @@ export class LoginPageComponent implements OnInit
       email: ['',[Validators.required,Validators.email]],
       password: ['',Validators.required]
     });
+
+    this.returnUrl = this.activateRoute.snapshot.queryParams['returnUrl'];
   }
 
   get fc()
@@ -36,7 +42,12 @@ export class LoginPageComponent implements OnInit
       return;
     }
 
-    alert(`email: ${this.loginForm.value.email} password: ${this.loginForm.value.password}`)
+    console.log(`Email: ${this.fc['email'].value} Password: ${this.fc['password'].value}`)
+
+    this.userService.login({email:this.fc['email'].value,password:this.fc['password'].value}).subscribe(() => {
+      this.router.navigateByUrl(this.returnUrl);
+    });
+
   }
 
 }

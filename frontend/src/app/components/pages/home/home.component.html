@@ -1,5 +1,8 @@
 <app-search></app-search>
 <app-tags></app-tags>
+<div class="message">
+  <p-messages [value]="messages" [enableService]="false" [closable]="false"></p-messages>
+</div>
 <ul>
   <li *ngFor="let food of foods">
     <a routerLink="/food/{{ food.id }}">
