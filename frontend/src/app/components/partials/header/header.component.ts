@@ -13,6 +13,8 @@ export class HeaderComponent {
   cartQuantity = 0;
   user!:User;
 
+  islogin = false;
+
   constructor(cartService: CartService, private userService: UserService)
   {
     cartService.getCartObserable().subscribe((newCart) => {
@@ -20,6 +22,10 @@ export class HeaderComponent {
     })
 
     userService.userObserable.subscribe((user) => {
+     if(user.name)
+     {
+      this.islogin = true;
+     }
       this.user = user;
     })
 
@@ -28,12 +34,10 @@ export class HeaderComponent {
 
   logOut()
   {
+    this.islogin = false;
     this.userService.logout();
   }
 
-  get isAuth()
-  {
-    return this.user.token;
-  }
+
 
 }
