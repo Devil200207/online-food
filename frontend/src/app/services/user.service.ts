@@ -41,12 +41,13 @@ export class UserService {
   register(userRegister: IUserRegister): Observable<User> {
     return this.http.post<User>(USERS_REGISTER_URL, userRegister).pipe(
       tap({
-        next: (user) => {
+        next: (user:User) => {
           this.setUserToLocalStorage(user);
           this.userSubject.next(user);
           this.messages = [{ severity: 'success', summary: 'Success', detail: `${user.name} register successful` }];
         },
         error: (errorresponce) => {
+          console.log(errorresponce)
           this.messages = [{ severity: 'error', summary: 'Error', detail: `${errorresponce}` }];
         }
 

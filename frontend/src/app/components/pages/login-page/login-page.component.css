@@ -121,6 +121,24 @@ label {
   transition: all 0.4s;
 }
 
+.message, .signup {
+  color: rgba(88, 87, 87, 0.822);
+  font-size: 14px;
+}
+
+.signup {
+  text-align: center;
+}
+
+.signup a {
+  color: #e72929;
+}
+
+.signup a:hover {
+  -webkit-text-decoration: underline #e72929;
+          text-decoration: underline #e72929;
+}
+
 button {
   background-color: #e72929;
   color: white;

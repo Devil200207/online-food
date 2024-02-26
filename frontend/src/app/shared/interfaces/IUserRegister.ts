@@ -4,6 +4,6 @@ export interface IUserRegister
   email: string;
   password: string;
   comfirmPassword: string;
-  addres: string;
+  address: string;
 
 }
