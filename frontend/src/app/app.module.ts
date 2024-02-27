@@ -18,6 +18,8 @@ import { MessagesModule } from 'primeng/messages';
 import { RegisterPageComponent } from './components/pages/register-page/register-page.component';
 import { LoadingComponent } from './components/partials/loading/loading.component';
 import { LoadingInterceptor } from './shared/interceptors/loading.interceptor';
+import { ChekoutPageComponent } from './components/pages/chekout-page/chekout-page.component';
+import { OrderItemsListComponent } from './components/partials/order-items-list/order-items-list.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { LoadingInterceptor } from './shared/interceptors/loading.interceptor';
     NotFoundComponent,
     LoginPageComponent,
     RegisterPageComponent,
-    LoadingComponent
+    LoadingComponent,
+    ChekoutPageComponent,
+    OrderItemsListComponent
   ],
   imports: [
     BrowserModule,
