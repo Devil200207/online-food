@@ -63,7 +63,7 @@ router.post("/register",asynceHandler(
 ))
 
 const generateTokenResponce = (user: any) => {
-    const token = jwt.sign({ email: user.email, isAdmin: user.isAdmin }, "chinmay", { expiresIn: '30d' });//token will expire in one hour
+    const token = jwt.sign({ id: user.id,email: user.email, isAdmin: user.isAdmin }, "chinmay", { expiresIn: '30d' });//token will expire in one hour
 
     user.token = token;
     return user;
