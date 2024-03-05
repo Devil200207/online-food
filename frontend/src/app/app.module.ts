@@ -21,6 +21,7 @@ import { LoadingInterceptor } from './shared/interceptors/loading.interceptor';
 import { ChekoutPageComponent } from './components/pages/chekout-page/chekout-page.component';
 import { OrderItemsListComponent } from './components/partials/order-items-list/order-items-list.component';
 import { MapComponent } from './components/partials/map/map.component';
+import { AuthInterceptor } from './auth/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,11 @@ import { MapComponent } from './components/partials/map/map.component';
     ReactiveFormsModule
   ],
   providers: [
+    {
+      provide:HTTP_INTERCEPTORS,
+      useClass:AuthInterceptor,
+      multi: true
+    },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: LoadingInterceptor,
