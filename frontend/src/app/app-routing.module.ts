@@ -9,48 +9,56 @@ import { RegisterPageComponent } from './components/pages/register-page/register
 import { ChekoutPageComponent } from './components/pages/chekout-page/chekout-page.component';
 import { authGuard } from './auth/guards/auth.guard';
 import { PaymentPageComponent } from './components/pages/payment-page/payment-page.component';
+import { OrderTrackPageComponent } from './components/pages/order-track-page/order-track-page.component';
 
 
 const routes: Routes = [
   {
-    path:'',
-    component:HomeComponent
+    path: '',
+    component: HomeComponent
   },
   {
-    path:'search/:searchterm',
-    component:HomeComponent
+    path: 'search/:searchterm',
+    component: HomeComponent
   },
   {
-    path:'tag/:tag',
-    component:HomeComponent
+    path: 'tag/:tag',
+    component: HomeComponent
   },
   {
-    path:'food/:id',
-    component:FoodPageComponent
+    path: 'food/:id',
+    component: FoodPageComponent
 
   },
   {
-    path:'cart-page',
-    component:CartPageComponent
+    path: 'cart-page',
+    component: CartPageComponent
   },
   {
-    path:'login',
-    component:LoginPageComponent
+    path: 'login',
+    component: LoginPageComponent
   },
   {
-    path:'register',
-    component:RegisterPageComponent
+    path: 'register',
+    component: RegisterPageComponent
   },
   {
-    path:'checkout',
-    component:ChekoutPageComponent,
+    path: 'checkout',
+    component: ChekoutPageComponent,
     canActivate: [authGuard]
   },
   {
-    path:'payment',
-    component:PaymentPageComponent,
+    path: 'payment',
+    component: PaymentPageComponent,
+    canActivate: [authGuard]
+  },
+  {
+
+    path: 'track/:orderId',
+    component: OrderTrackPageComponent,
     canActivate: [authGuard]
   }
+
 ];
 
 @NgModule({
