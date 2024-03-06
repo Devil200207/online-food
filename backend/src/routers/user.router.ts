@@ -24,9 +24,9 @@ router.get("/seed", asynceHandler(
 router.post("/login", asynceHandler(
     async (req, res) => {
         const { email, password } = req.body; //destructuring the email and password from the request body
-        const user = await MineUserModel.findOne({ email, password }); //find the user by email and password
+        const user = await MineUserModel.findOne({ email }); //find the user by email and password
 
-        if (user) {
+        if (user && (await bcrypt.compare(password, user.password))) {
             res.send(generateTokenResponce(user))
         }
         else {
