@@ -8,7 +8,7 @@ export class Order{
   name!:string;
   address!:string;
   addressLatLng?:LatLng;
-  paymenId!:string;
+  paymentId!:string;
   createdAt!:string
   status!:string;
 }
