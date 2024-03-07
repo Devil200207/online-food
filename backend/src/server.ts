@@ -15,7 +15,7 @@ const app = express();
 app.use(express.json());
 app.use(cors({
     credentials:true,
-    origin: ["http://localhost:4200"]
+    origin: ["https://tech-taste-frontend-rcog-ptpka38a7-devil200207.vercel.app"]
 }));
 
 app.use("/api/foods",foodRouter);
